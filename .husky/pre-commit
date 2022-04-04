@@ -2,4 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # 在 src 目录下对 .js 和 .vue 文件进行检测
-npx eslint --ext .js,.vue src
+# npx eslint --ext .js,.vue src
+
+# 使用 lint-staged 的配置代替原来的单纯检测
+npx lint-staged 
