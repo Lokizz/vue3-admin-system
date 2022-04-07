@@ -25,7 +25,30 @@ module.exports = defineConfig({
       }
     }
   },
+  // ? 向 css 相关的 loader 传递选项
+  css: {
+    loaderOptions: {
+      sass: {
+        sassOptions: {
+          // ? 开启 :export 共享变量的功能
+          mode: 'icss'
+        }
+      }
+    }
+  },
   configureWebpack: {
+    // module: {
+    //   rules: [{
+    //     test: /\.scss$/i,
+    //     loader: 'sass-loader',
+    //     options: {
+    //       sassOptions: {
+    //         // ? 开启 Interoperable CSS 功能（使用 :import 和 :export)
+    //         mode: 'icss'
+    //       }
+    //     }
+    //   }]
+    // },
     plugins: [
       AutoImport({
         // targets to transform

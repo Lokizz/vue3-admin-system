@@ -1,6 +1,9 @@
 // * 配置全局样式
 
 @import './update-element.scss';
+@import './variables.module.scss';
+@import './mixin.scss';
+@import './sidebar.scss';
 
 html,
 body {
