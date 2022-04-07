@@ -9,7 +9,9 @@ module.exports = {
   // ? ESLint 中基础配置需要继承的配置
   extends: [
     'plugin:vue/vue3-essential',
-    '@vue/standard'
+    '@vue/standard',
+    // ? 应用 unplugin-vue-auto-import 的设置
+    './.eslintrc-auto-import.json'
   ],
   parserOptions: {
     parser: '@babel/eslint-parser'
@@ -22,6 +24,9 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     // ! 取消与 prettier 的配置冲突，定义函数时，函数名后不用带空格
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    // ? 取消 vue 组件名称不能为单个单词的限制
+    'vue/multi-word-component-names': 'off',
+    indent: 'off'
   }
 }
