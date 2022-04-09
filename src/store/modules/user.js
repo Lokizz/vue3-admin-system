@@ -1,5 +1,7 @@
+// * 使用 api 返回的数据设置用户相关的全局数据
 import {
-  login
+  login,
+  getUserInfo
 } from '@/api/sys'
 import md5 from 'md5'
 import {
@@ -16,18 +18,22 @@ export default {
   // 使用 namespaced 属性注册单独的模块
   namespaced: true,
   state: () => ({
-    token: getItem(TOKEN) || ''
+    token: getItem(TOKEN) || '',
+    userInfo: {}
   }),
   mutations: {
     // ? 修改 state 的值
     setToken(state, token) {
       state.token = token
       setItem(TOKEN, token)
+    },
+    setUserInfo(state, userInfo) {
+      state.userInfo = userInfo
     }
   },
   actions: {
     /**
-     * 登陆请求动作
+     * * 登陆请求动作
      */
     // store 的 login
     login(context, userInfo) {
@@ -53,6 +59,14 @@ export default {
             reject(err)
           })
       })
+    },
+    /**
+     * * 获取用户信息
+     */
+    async getUserInfo(context) {
+      const res = await getUserInfo()
+      this.commit('user/setUserInfo', res)
+      return res
     }
   }
 }
