@@ -1,9 +1,12 @@
 // * 自定义请求的通用设置，以及拦截器
 import axios from 'axios'
 import {
-  ElMessage
-} from 'element-plus/es'
+  ElMessage as Elm
+} from 'element-plus'
 import store from '@/store'
+import {
+  isExpired
+} from '@/utils/auth'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -15,6 +18,12 @@ service.interceptors.request.use(
   config => {
     // ? 统一注入 token
     if (store.getters.token) {
+      if (isExpired()) {
+        // 退出操作
+        store.dispatch('user/logout')
+        Elm.error('token 失效')
+        return Promise.reject(new Error('token 失效'))
+      }
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     // ? 添加 icode (有效期为30天)
@@ -43,13 +52,17 @@ service.interceptors.response.use(
       return data
     } else {
       // ? 失败（请求成功，业务失败）
-      ElMessage.error(message)
+      Elm.error(message)
       return Promise.reject(new Error(message))
     }
   },
   // * 请求失败的处理
   err => {
-    ElMessage.error(err.message)
+    // ? 服务器的 token 有效时长过期
+    if (err.response && err.response.data && err.response.data.code === 401) {
+      store.dispatch('user/logout')
+    }
+    Elm.error(err.message)
     return Promise.reject(err)
   }
 )

@@ -6,8 +6,12 @@ import {
 import md5 from 'md5'
 import {
   getItem,
-  setItem
+  setItem,
+  removeAllItems
 } from '@/utils/storage'
+import {
+  setTimestamp
+} from '@/utils/auth'
 // ? 导入常量
 import {
   TOKEN
@@ -53,6 +57,8 @@ export default {
             this.commit('user/setToken', data.token)
             // ? 登陆成功后跳转
             router.push('/')
+            // ? 保存登陆时间
+            setTimestamp()
             resolve(data)
           })
           .catch(err => {
@@ -67,6 +73,18 @@ export default {
       const res = await getUserInfo()
       this.commit('user/setUserInfo', res)
       return res
+    },
+    /**
+     * * 用户退出
+     */
+    logout() {
+      // ? 清空用户数据
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      // ? 清空缓存数据
+      removeAllItems()
+      // ? TODO: 清理权限相关配置
+      router.push('/login')
     }
   }
 }
