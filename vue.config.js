@@ -37,18 +37,11 @@ module.exports = defineConfig({
     }
   },
   configureWebpack: {
-    // module: {
-    //   rules: [{
-    //     test: /\.scss$/i,
-    //     loader: 'sass-loader',
-    //     options: {
-    //       sassOptions: {
-    //         // ? 开启 Interoperable CSS 功能（使用 :import 和 :export)
-    //         mode: 'icss'
-    //       }
-    //     }
-    //   }]
-    // },
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify')
+      }
+    },
     plugins: [
       AutoImport({
         // targets to transform
