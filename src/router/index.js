@@ -122,7 +122,7 @@ const publicRoutes = [{
         // ! 用以判断是否显示在 menu 菜单中
         meta: {
           title: 'profile',
-          icon: 'el-icon-profile'
+          icon: 'personnel'
         }
       },
       {

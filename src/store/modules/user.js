@@ -59,7 +59,7 @@ export default {
             router.push('/')
             // ? 保存登陆时间
             setTimestamp()
-            resolve(data)
+            resolve()
           })
           .catch(err => {
             reject(err)

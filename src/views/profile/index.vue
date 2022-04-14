@@ -1,9 +1,7 @@
 <template>
-  <div class="">个人中心</div>
+  <div>个人中心</div>
 </template>
 
-<script setup>
-import {} from 'vue'
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>

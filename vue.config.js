@@ -1,11 +1,7 @@
-const {
-  defineConfig
-} = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service')
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
-const {
-  ElementPlusResolver
-} = require('unplugin-vue-components/resolvers')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 const path = require('path')
 // ? 处理路径
 function resolve(dir) {
@@ -40,14 +36,16 @@ module.exports = defineConfig({
     resolve: {
       fallback: {
         path: require.resolve('path-browserify')
-      }
+      },
+      extensions: ['.ts', '.js', '.vue', '.json', '.mjs']
     },
     plugins: [
       AutoImport({
         // targets to transform
         include: [
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-          /\.vue$/, /\.vue\?vue/, // .vue
+          /\.vue$/,
+          /\.vue\?vue/, // .vue
           /\.md$/ // .md
         ],
         // global imports to register
@@ -77,10 +75,7 @@ module.exports = defineConfig({
     ]
   },
   chainWebpack(config) {
-    config.module
-      .rule('svg')
-      .exclude.add(resolve('src/icons'))
-      .end()
+    config.module.rule('svg').exclude.add(resolve('src/icons')).end()
     config.module
       .rule('icons')
       .test(/\.svg$/)
