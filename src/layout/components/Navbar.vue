@@ -1,6 +1,7 @@
 <template>
   <div class="navbar">
     <hamburger class="hamburger-container"></hamburger>
+    <breadcrumb class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
@@ -31,6 +32,7 @@
 <script setup>
 import { Tools } from '@element-plus/icons-vue'
 import hamburger from '@/components/hamburger/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 
 const store = useStore()
 const logout = () => {
@@ -45,11 +47,12 @@ const logout = () => {
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 4px rgba(0, 21, 41, 0.08);
+  display: flex;
+  justify-content: flex-start;
 
   .hamburger-container {
     line-height: 46px;
     height: 100%;
-    float: left;
     cursor: pointer;
     transition: background 0.3s;
     // hover 动画
@@ -59,14 +62,12 @@ const logout = () => {
   }
 
   .right-menu {
-    display: flex;
-    align-items: center;
+    // ? flex 下的子元素设置 margin 为 auto，可自动填充该方位的空白
+    margin-left: auto;
     padding-right: 16px;
 
     :deep(.avatar-container) {
       cursor: pointer;
-      // ? flex 下的子元素设置 margin 为 auto，可自动填充该方位的空白
-      margin-left: auto;
       .avatar-wrapper {
         margin-top: 5px;
         position: relative;

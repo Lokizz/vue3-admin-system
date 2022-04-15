@@ -11,6 +11,8 @@
     "effectScope": true,
     "EffectScope": true,
     "ElAvatar": true,
+    "ElBreadcrumb": true,
+    "ElBreadcrumbItem": true,
     "ElButton": true,
     "ElDropdown": true,
     "ElDropdownItem": true,
