@@ -3,13 +3,13 @@
   .main-container {
     min-height: 100%;
     transition: margin-left 0.28s;
-    margin-left: $sideBarWidth;
+    margin-left: $sidebarWidth;
     position: relative;
   }
 
   .sidebar-container {
     transition: width 0.28s;
-    width: $sideBarWidth !important;
+    width: $sidebarWidth !important;
     height: 100%;
     position: fixed;
     top: 0;
@@ -73,11 +73,11 @@
 
     & .nest-menu .el-submenu > .el-submenu__title,
     & .el-submenu .el-menu-item {
-      min-width: $sideBarWidth !important;
+      min-width: $sidebarWidth !important;
     }
   }
 
-  .hideSidebar {
+  .hiddenSidebar {
     .sidebar-container {
       width: 54px !important;
     }
@@ -124,6 +124,9 @@
     }
 
     .el-menu--collapse {
+      .svg-icon {
+        margin-right: 0;
+      }
       .el-submenu {
         & > .el-submenu__title {
           & > span {
@@ -139,7 +142,7 @@
   }
 
   .el-menu--collapse .el-menu .el-submenu {
-    min-width: $sideBarWidth !important;
+    min-width: $sidebarWidth !important;
   }
 
   .withoutAnimation {

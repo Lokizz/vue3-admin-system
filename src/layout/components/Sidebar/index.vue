@@ -1,5 +1,10 @@
 <template>
-  <sidebar-menu> </sidebar-menu>
+  <div class="">
+    <h1></h1>
+    <el-scrollbar>
+      <sidebar-menu> </sidebar-menu>
+    </el-scrollbar>
+  </div>
 </template>
 
 <script setup>

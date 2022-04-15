@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    :collapse="!$store.getters.isSidebarOpened"
     :unique-opened="true"
     :background-color="$store.getters.cssVar.menuBg"
     :text-color="$store.getters.cssVar.menuText"
@@ -24,7 +25,6 @@ const routes = computed(() => {
   const filteredRoutes = filterRoutes(router.getRoutes())
   return generateMenus(filteredRoutes)
 })
-console.log(routes.value)
 
 // ? 默认激活
 const route = useRoute()

@@ -10,7 +10,8 @@ $menuHover: #263445;
 $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
 
-$sideBarWidth: 210px;
+$sidebarWidth: 210px;
+$hiddenSidebarWidth: 54px;
 
 // ? 使用 :export 让 CSS 和 JS 共享变量，JS 通过 ESM 导入使用
 :export {
@@ -21,5 +22,6 @@ $sideBarWidth: 210px;
   menuHover: $menuHover;
   subMenuBg: $subMenuBg;
   subMenuHover: $subMenuHover;
-  sideBarWidth: $sideBarWidth;
+  sideBarWidth: $sidebarWidth;
+  hiddenSidebarWidth: $hiddenSidebarWidth;
 }

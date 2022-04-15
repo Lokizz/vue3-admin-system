@@ -15,6 +15,7 @@ const getters = {
   userInfo: (state) => {
     return state.user.userInfo
   },
-  cssVar: (state) => variables
+  cssVar: (state) => variables,
+  isSidebarOpened: (state) => state.app.isSidebarOpened
 }
 export default getters
