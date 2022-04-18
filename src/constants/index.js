@@ -5,3 +5,5 @@ export const TOKEN = 'token'
 export const TOKEN_TIMESTAMP = 'timestamp'
 // ? 超时时长
 export const TOKEN_EXPIRATION_TIME = 2 * 3600 * 1000
+// ? 语言环境
+export const LANG = 'language'

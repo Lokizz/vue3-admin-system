@@ -16,6 +16,7 @@ const getters = {
     return state.user.userInfo
   },
   cssVar: (state) => variables,
-  isSidebarOpened: (state) => state.app.isSidebarOpened
+  isSidebarOpened: (state) => state.app.isSidebarOpened,
+  language: (state) => state.app.language
 }
 export default getters
