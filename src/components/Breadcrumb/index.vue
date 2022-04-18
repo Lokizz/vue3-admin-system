@@ -8,11 +8,11 @@
         <!-- 不可点击 -->
         <!-- 面包屑的最后一个数据 -->
         <span class="no-redirect" v-if="idx === breadcrumbData.length - 1">{{
-          item.meta.title
+          generateTitle(item.meta.title)
         }}</span>
         <!-- 可点击 -->
         <span class="redirect" v-else @click="onLinkClick(item)">{{
-          item.meta.title
+          generateTitle(item.meta.title)
         }}</span>
       </el-breadcrumb-item>
     </transition-group>
@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+import { generateTitle } from '@/utils/i18n'
 const breadcrumbData = ref([])
 const getBreadcrumbData = () => {
   // ? `route.matched` 获取当前的路由表

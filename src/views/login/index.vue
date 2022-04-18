@@ -7,7 +7,8 @@
       ref="loginFormRef"
     >
       <div class="title-container">
-        <h3 class="title">用户登陆</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <lang-select class="lang-select"></lang-select>
       </div>
       <!-- username -->
       <el-form-item prop="username">
@@ -48,13 +49,17 @@
         style="width: 100%; margin-bottom: 30px"
         :loading="loading"
         @click="handleLogin"
-        >登陆</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
+
+      <div class="tips" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
+import LangSelect from '@/components/LangSelect/index.vue'
+import { useI18n } from 'vue-i18n/dist/vue-i18n.esm-bundler'
 import { validatePass } from './rules'
 
 const passwordType = ref('password')
@@ -69,13 +74,14 @@ const loginForm = ref({
 })
 
 // ? 校验规则
+const i18n = useI18n()
 const loginRules = ref({
   // ? 名称与 el-form-item 的 prop 属性保持一致
   username: [
     {
       required: true,
       trigger: 'blur',
-      message: '用户名不能为空'
+      message: i18n.t('msg.login.usernameRule')
     }
   ],
   password: [
@@ -160,6 +166,12 @@ $cursor: #fff;
     }
   }
 
+  .tips {
+    font-size: 16px;
+    color: white;
+    line-height: 24px;
+  }
+
   .svg-container {
     padding: 6px 5px 6px 15px;
     color: $dark_gray;
@@ -186,6 +198,17 @@ $cursor: #fff;
     color: $dark_gray;
     cursor: pointer;
     user-select: none;
+  }
+
+  :deep(.lang-select) {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    background-color: #fff;
+    font-size: 22px;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
 </style>

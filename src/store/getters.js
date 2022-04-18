@@ -17,6 +17,7 @@ const getters = {
   },
   cssVar: (state) => variables,
   isSidebarOpened: (state) => state.app.isSidebarOpened,
-  language: (state) => state.app.language
+  language: (state) => state.app.language,
+  mainColor: (state) => state.theme.mainColor
 }
 export default getters

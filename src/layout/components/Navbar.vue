@@ -3,6 +3,7 @@
     <hamburger class="hamburger-container"></hamburger>
     <breadcrumb class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
+      <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect"></lang-select>
 
       <!-- 头像 -->
@@ -18,13 +19,15 @@
         <!-- #使用的是 v-slot 的简写 -->
         <template #dropdown>
           <el-dropdown-item>
-            <router-link to="/"> 主页 </router-link>
+            <router-link to="/">{{ $t('msg.navBar.home') }}</router-link>
           </el-dropdown-item>
           <el-dropdown-item>
-            <a target="__blank" href="#">课程主页</a>
+            <a target="__blank" href="#">{{ $t('msg.navBar.course') }}</a>
           </el-dropdown-item>
           <!-- divided 显示分隔线 -->
-          <el-dropdown-item divided @click="logout">退出登陆</el-dropdown-item>
+          <el-dropdown-item divided @click="logout">{{
+            $t('msg.navBar.logout')
+          }}</el-dropdown-item>
         </template>
       </el-dropdown>
     </div>
@@ -36,6 +39,7 @@ import { Tools } from '@element-plus/icons-vue'
 import hamburger from '@/components/hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import LangSelect from '@/components/LangSelect/index.vue'
+import ThemePicker from '@/components/ThemeSelect/index.vue'
 
 const store = useStore()
 const logout = () => {
@@ -68,13 +72,14 @@ const logout = () => {
     // ? flex 下的子元素设置 margin 为 auto，可自动填充该方位的空白
     margin-left: auto;
     padding-right: 16px;
+    display: flex;
+    align-items: center;
 
     :deep(.right-menu-item) {
       display: inline-block;
       padding: 0 18px 0 0;
       font-size: 24px;
       color: #5a5e66;
-      vertical-align: text-bottom;
 
       &.hover-effect {
         cursor: pointer;
