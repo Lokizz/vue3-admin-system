@@ -32,8 +32,6 @@ const activeMenu = computed(() => {
   const { path } = route
   return path
 })
-const store = useStore()
-console.log(store.getters.cssVar)
 </script>
 
 <style lang="less" scoped></style>

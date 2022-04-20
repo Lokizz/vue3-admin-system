@@ -28,6 +28,7 @@ declare module 'vue' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Hamburger: typeof import('./src/components/hamburger/index.vue')['default']
     LangSelect: typeof import('./src/components/LangSelect/index.vue')['default']
+    Screenfull: typeof import('./src/components/Screenfull/index.vue')['default']
     SelectColor: typeof import('./src/components/ThemeSelect/components/SelectColor.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
     ThemeSelect: typeof import('./src/components/ThemeSelect/index.vue')['default']
