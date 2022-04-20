@@ -28,6 +28,7 @@
     "ElMenuItem": true,
     "ElMessage": true,
     "ElPagination": true,
+    "ElRow": true,
     "ElScrollbar": true,
     "ElSubMenu": true,
     "ElTooltip": true,

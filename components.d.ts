@@ -22,12 +22,15 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElPagination: typeof import('element-plus/es')['ElPagination']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     Hamburger: typeof import('./src/components/hamburger/index.vue')['default']
     LangSelect: typeof import('./src/components/LangSelect/index.vue')['default']
+    SelectColor: typeof import('./src/components/ThemeSelect/components/SelectColor.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
+    ThemeSelect: typeof import('./src/components/ThemeSelect/index.vue')['default']
   }
 }
 

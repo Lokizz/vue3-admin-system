@@ -1,6 +1,8 @@
 // * 全局状态的快捷访问
 
-import variables from '@/styles/variables.module.scss'
+import { generateColors } from '@/utils/theme.js'
+import { getItem } from '@/utils/storage.js'
+import { MAIN_COLOR } from '@/constants'
 
 // ? getters 相当于 computed
 const getters = {
@@ -15,7 +17,10 @@ const getters = {
   userInfo: (state) => {
     return state.user.userInfo
   },
-  cssVar: (state) => variables,
+  cssVar: (state) => ({
+    ...state.theme.variables,
+    ...generateColors(getItem(MAIN_COLOR))
+  }),
   isSidebarOpened: (state) => state.app.isSidebarOpened,
   language: (state) => state.app.language,
   mainColor: (state) => state.theme.mainColor

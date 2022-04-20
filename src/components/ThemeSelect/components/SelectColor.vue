@@ -23,6 +23,7 @@
 </template>
 
 <script setup>
+import { generateNewStyle, writeNewStyle } from '@/utils/theme.js'
 defineProps({
   modelValue: {
     type: Boolean,
@@ -58,7 +59,9 @@ const closed = () => {
 }
 
 // ? 确定按钮点击事件
-const confirm = () => {
+const confirm = async () => {
+  const newStyle = await generateNewStyle(mColor.value)
+  writeNewStyle(newStyle)
   // 将双向绑定的颜色值存储到 vuex 中
   store.commit('theme/setMainColor', mColor.value)
   closed()

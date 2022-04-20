@@ -7,7 +7,7 @@
         src="https://s2.loli.net/2022/04/15/O3avoQqKcNxEhH6.png"
       ></el-avatar>
       <h1 class="logo-title" v-if="$store.getters.isSidebarOpened">
-        LaoIT Admin
+        LYIT Admin
       </h1>
     </div>
     <el-scrollbar>

@@ -6,7 +6,7 @@
     <!-- 左侧 Menu -->
     <sidebar
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     ></sidebar>
     <div class="main-container">
       <div class="fixed-header">
@@ -23,8 +23,6 @@
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar/index.vue'
 import AppMain from './components/AppMain.vue'
-// ? 导入 SCSS 中使用 :export 定义的变量
-import variables from '@/styles/variables.module.scss'
 </script>
 
 <style lang="scss" scoped>
