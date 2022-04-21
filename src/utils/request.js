@@ -1,12 +1,8 @@
 // * 自定义请求的通用设置，以及拦截器
 import axios from 'axios'
-import {
-  ElMessage as Elm
-} from 'element-plus'
+import { ElMessage as Elm } from 'element-plus'
 import store from '@/store'
-import {
-  isExpired
-} from '@/utils/auth'
+import { isExpired } from '@/utils/auth'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -15,14 +11,14 @@ const service = axios.create({
 
 // ? 使用拦截器配置 token 和 imooc 等请求时常用的参数s
 service.interceptors.request.use(
-  config => {
+  (config) => {
     // ? 统一注入 token
     if (store.getters.token) {
       if (isExpired()) {
         // 退出操作
         store.dispatch('user/logout')
-        Elm.error('token 失效')
-        return Promise.reject(new Error('token 失效'))
+        Elm.error('token 已过期，请重新登陆')
+        return Promise.reject(new Error('token 已过期，请重新登陆'))
       }
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
@@ -32,7 +28,7 @@ service.interceptors.request.use(
     return config
   },
   // ? 请求失败
-  err => {
+  (err) => {
     return Promise.reject(err)
   }
 )
@@ -40,12 +36,8 @@ service.interceptors.request.use(
 // ? 响应拦截器
 service.interceptors.response.use(
   // * 请求成功的处理
-  response => {
-    const {
-      success,
-      message,
-      data
-    } = response.data
+  (response) => {
+    const { success, message, data } = response.data
     // ? 判断当前请求是否成功
     if (success) {
       // ? 成功返回解析后的数据
@@ -57,11 +49,12 @@ service.interceptors.response.use(
     }
   },
   // * 请求失败的处理
-  err => {
+  (err) => {
     // ? 服务器的 token 有效时长过期
     if (err.response && err.response.data && err.response.data.code === 401) {
       store.dispatch('user/logout')
     }
+    if (err.message === 'token 已过期，请重新登陆') return
     Elm.error(err.message)
     return Promise.reject(err)
   }
