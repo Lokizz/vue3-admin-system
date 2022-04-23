@@ -4,7 +4,8 @@
     <!-- 图标 -->
     <div>
       <el-tooltip :content="$t('msg.navBar.themeChange')">
-        <el-icon><svg-icon icon="change-theme"></svg-icon></el-icon
+        <el-icon
+          ><svg-icon id="guide-theme" icon="change-theme"></svg-icon></el-icon
       ></el-tooltip>
     </div>
     <!-- menu -->

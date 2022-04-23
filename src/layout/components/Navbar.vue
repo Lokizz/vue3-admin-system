@@ -1,9 +1,13 @@
 <template>
   <div class="navbar">
     <hamburger class="hamburger-container"></hamburger>
-    <breadcrumb class="breadcrumb-container"></breadcrumb>
+    <breadcrumb id="guide-breadcrumb" class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
-      <header-search class="right-menu-item hover-effect"></header-search>
+      <guide class="right-menu-item hover-effect"></guide>
+      <header-search
+        id="guide-search"
+        class="right-menu-item hover-effect"
+      ></header-search>
       <screenfull class="right-menu-item hover-effect"></screenfull>
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
       <lang-select class="right-menu-item hover-effect"></lang-select>
@@ -44,6 +48,7 @@ import LangSelect from '@/components/LangSelect/index.vue'
 import ThemePicker from '@/components/ThemeSelect/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
 import HeaderSearch from '@/components/HeaderSearch/index.vue'
+import Guide from '@/components/Guide/index.vue'
 
 const store = useStore()
 const logout = () => {
