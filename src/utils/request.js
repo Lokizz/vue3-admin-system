@@ -24,6 +24,8 @@ service.interceptors.request.use(
     }
     // ? 添加 icode (有效期为30天)
     config.headers.icode = '5300E26A2ACF2904'
+    // ? 配置接口的国际化
+    config.headers['Accept-Language'] = store.getters.language
     // ! 必须返回 config
     return config
   },
