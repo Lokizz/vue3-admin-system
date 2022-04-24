@@ -9,7 +9,7 @@ const service = axios.create({
   timeout: 5000
 })
 
-// ? 使用拦截器配置 token 和 imooc 等请求时常用的参数s
+// ? 使用拦截器配置 token 和 imooc 等请求时常用的参数
 service.interceptors.request.use(
   (config) => {
     // ? 统一注入 token

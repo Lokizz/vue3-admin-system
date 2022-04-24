@@ -12,7 +12,8 @@ const getters = {
    * @returns true 表示用户信息已存在
    */
   hasUserInfo: (state) => {
-    return JSON.stringify(state.user.userInfo) !== '{}'
+    // return JSON.stringify(state.user.userInfo) !== '{}'
+    return JSON.stringify(state.user.userInfo) !== '{}' && state.user.userInfo
   },
   userInfo: (state) => {
     return state.user.userInfo
