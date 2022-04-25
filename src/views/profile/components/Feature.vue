@@ -28,7 +28,7 @@ const activeName = ref(0)
 }
 
 .el-collapse-item {
-  ::v-deep a {
+  :deep(a) {
     color: #2d62f7;
     margin: 0 4px;
   }

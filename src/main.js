@@ -11,8 +11,12 @@ import SvgIcon from '@/components/SvgIcon'
 import './permission'
 // ? 导入国际化组件
 import i18n from '@/i18n/index.js'
+// ? 导入全局属性
+import installFilter from '@/filters'
 
 const app = createApp(App)
+// ? 注册全局属性
+installFilter(app)
 // ? 将 SvgIcon 注册为全局组件
 app.component('svg-icon', SvgIcon)
 app.use(store)
