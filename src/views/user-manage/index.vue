@@ -2,7 +2,7 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary">
+        <el-button type="primary" @click="onImportExcelClick">
           {{ $t('msg.excel.importExcel') }}
         </el-button>
         <el-button type="success">
@@ -115,9 +115,23 @@ const getListData = async () => {
 getListData()
 // ? 监听语言环境的变化
 watchSwitchLang(getListData)
+// ? 让 `keep-alive` 缓存的组件重新激活时调用
+onActivated(getListData)
 
-const handleSizeChange = () => {}
-const handleCurrentChange = () => {}
+const handleSizeChange = (currentSize) => {
+  size.value = currentSize
+  getListData()
+}
+const handleCurrentChange = (currentPage) => {
+  page.value = currentPage
+  getListData()
+}
+
+// ? excel 导入点击事件
+const router = useRouter()
+const onImportExcelClick = () => {
+  router.push('/user/import')
+}
 </script>
 
 <style lang="scss" scoped>

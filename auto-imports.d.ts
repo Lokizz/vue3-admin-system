@@ -20,7 +20,6 @@ declare global {
   const ElCollapse: typeof import('element-plus/es')['ElCollapse']
   const ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
   const ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
-  const ElColumn: typeof import('element-plus/es')['ElColumn']
   const ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
   const ElDialog: typeof import('element-plus/es')['ElDialog']
   const ElDropdown: typeof import('element-plus/es')['ElDropdown']

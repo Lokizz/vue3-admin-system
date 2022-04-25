@@ -19,7 +19,6 @@
     "ElCollapse": true,
     "ElCollapseItem": true,
     "ElColorPicker": true,
-    "ElColumn": true,
     "ElConfigProvider": true,
     "ElDialog": true,
     "ElDropdown": true,
