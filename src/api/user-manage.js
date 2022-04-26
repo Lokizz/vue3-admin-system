@@ -16,3 +16,17 @@ export const userBatchImport = (data) => {
     data
   })
 }
+
+// ? 删除用户
+export const deleteUser = (id) => {
+  return request({
+    url: '/user-manage/delete/' + id
+  })
+}
+
+// ? 获取所有用户
+export const getUserManageAllList = () => {
+  return request({
+    url: '/user-manage/all-list'
+  })
+}
