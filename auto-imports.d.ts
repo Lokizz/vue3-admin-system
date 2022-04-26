@@ -21,6 +21,8 @@ declare global {
   const ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
   const ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
   const ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+  const ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
+  const ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
   const ElDialog: typeof import('element-plus/es')['ElDialog']
   const ElDropdown: typeof import('element-plus/es')['ElDropdown']
   const ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']

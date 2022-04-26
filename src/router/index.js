@@ -1,11 +1,9 @@
-import {
-  createRouter,
-  createWebHashHistory
-} from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import layout from '@/layout'
 
 // ? 私有路由表（权限路由）
-const privateRoutes = [{
+const privateRoutes = [
+  {
     path: '/user',
     name: 'user',
     redirect: '/user/manage',
@@ -14,7 +12,8 @@ const privateRoutes = [{
       title: 'user',
       icon: 'personnel'
     },
-    children: [{
+    children: [
+      {
         path: '/user/manage',
         name: 'userManage',
         component: () => import('@/views/user-manage'),
@@ -45,6 +44,8 @@ const privateRoutes = [{
         path: '/user/info/:id',
         name: 'userInfo',
         component: () => import('@/views/user-info'),
+        // ! 用以接收组件的 props 作为 route.params
+        props: true,
         meta: {
           title: 'userInfo'
         }
@@ -67,7 +68,8 @@ const privateRoutes = [{
       title: 'article',
       icon: 'article'
     },
-    children: [{
+    children: [
+      {
         path: '/article/ranking',
         name: 'articleRanking',
         component: () => import('@/views/article-ranking'),
@@ -106,7 +108,8 @@ const privateRoutes = [{
 ]
 
 // ? 公开路由表
-const publicRoutes = [{
+const publicRoutes = [
+  {
     path: '/login',
     component: () => import('@/views/login')
   },
@@ -114,7 +117,8 @@ const publicRoutes = [{
     path: '/',
     redirect: '/profile',
     component: layout,
-    children: [{
+    children: [
+      {
         // 个人中心
         path: '/profile',
         name: 'profile',

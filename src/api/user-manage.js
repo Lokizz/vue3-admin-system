@@ -8,6 +8,13 @@ export const getUserManageList = (data) => {
   })
 }
 
+// ? 获取用户详情
+export const userDetail = (id) => {
+  return request({
+    url: '/user-manage/detail/' + id
+  })
+}
+
 // ? 批量导入用户
 export const userBatchImport = (data) => {
   return request({

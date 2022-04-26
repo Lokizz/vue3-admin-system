@@ -68,7 +68,8 @@
         >
           <!-- v-slot 接收 props 数据 -->
           <template #default="{ row }">
-            <el-button type="primary" size="small">
+            <!-- 传递 props.id 来调用接口 -->
+            <el-button type="primary" size="small"  @click="onShowClick(row._id)">
               {{ $t('msg.excel.show') }}
             </el-button>
             <el-button type="info" size="small">
@@ -132,6 +133,12 @@ const handleSizeChange = (currentSize) => {
 const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
+}
+
+// ? 查看用户详情
+const onShowClick = id => {
+  // 跳转页面的同时，通过
+  router.push(`/user/info/${id}`)
 }
 
 // ? 删除用户
