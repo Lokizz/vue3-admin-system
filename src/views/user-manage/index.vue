@@ -69,10 +69,15 @@
           <!-- v-slot 接收 props 数据 -->
           <template #default="{ row }">
             <!-- 传递 props.id 来调用接口 -->
-            <el-button type="primary" size="small"  @click="onShowClick(row._id)">
+            <el-button
+              type="primary"
+              size="small"
+              @click="onShowClick(row._id)"
+            >
               {{ $t('msg.excel.show') }}
             </el-button>
-            <el-button type="info" size="small">
+            <!-- 传递 userId 给 roles 组件 -->
+            <el-button type="info" size="small" @click="onShowRoleClick(row)">
               {{ $t('msg.excel.showRole') }}
             </el-button>
             <el-button type="danger" size="small" @click="onRemoveClick(row)">
@@ -95,6 +100,11 @@
 
     <!-- 接受子组件传递的 update:modelValue 来更新显示状态 -->
     <export-to-excel v-model="exportToExcelVisible"></export-to-excel>
+    <roles-dialog
+      v-model="roleDialogVisible"
+      :userId="selectUserId"
+      @updateRole="getListData"
+    ></roles-dialog>
   </div>
 </template>
 
@@ -104,6 +114,7 @@ import { watchSwitchLang } from '@/utils/i18n'
 import { ElMessageBox } from 'element-plus'
 import { useI18n } from 'vue-i18n/dist/vue-i18n.esm-bundler'
 import ExportToExcel from './components/Export2Excel.vue'
+import RolesDialog from './components/roles.vue'
 
 // ? 数据相关
 const tableData = ref([])
@@ -136,10 +147,24 @@ const handleCurrentChange = (currentPage) => {
 }
 
 // ? 查看用户详情
-const onShowClick = id => {
+const onShowClick = (id) => {
   // 跳转页面的同时，通过
   router.push(`/user/info/${id}`)
 }
+
+// ? 为员工分配角色
+const roleDialogVisible = ref(false)
+const selectUserId = ref('')
+// ? 显示 dialog，并且获取需要传递的 userId
+const onShowRoleClick = (row) => {
+  roleDialogVisible.value = true
+  selectUserId.value = row._id
+}
+// ! 保证每次打开 dialog 都可以重新获取舒据
+watch(roleDialogVisible, (val) => {
+  // 如果关闭了 dialog，则设置 userId 为空
+  if (!val) selectUserId.value = ''
+})
 
 // ? 删除用户
 const i18n = useI18n()

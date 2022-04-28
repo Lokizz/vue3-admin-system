@@ -98,9 +98,7 @@ const getUserDetail = async () => {
 }
 getUserDetail()
 // ? 国际化处理
-watchSwitchLang(() => {
-  getUserDetail()
-})
+watchSwitchLang(getUserDetail)
 
 // ? 打印相关
 const printLoading = ref(false)

@@ -15,6 +15,22 @@ export const userDetail = (id) => {
   })
 }
 
+// ? 获取用户当前角色
+export const userRoles = (id) => {
+  return request({
+    url: '/user-manage/role/' + id
+  })
+}
+
+// ? 为用户分配角色
+export const updateRole = (id, roles) => {
+  return request({
+    url: '/user-manage/update-role/' + id,
+    method: 'POST',
+    data: { roles }
+  })
+}
+
 // ? 批量导入用户
 export const userBatchImport = (data) => {
   return request({
