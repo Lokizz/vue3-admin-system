@@ -52,6 +52,7 @@ declare global {
   const ElTimeline: typeof import('element-plus/es')['ElTimeline']
   const ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
   const ElTooltip: typeof import('element-plus/es')['ElTooltip']
+  const ElTree: typeof import('element-plus/es')['ElTree']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
