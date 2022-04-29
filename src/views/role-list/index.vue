@@ -20,6 +20,7 @@
             type="primary"
             size="small"
             @click="onDistributePermission(row)"
+            v-permission="['distributePermission']"
           >
             {{ $t('msg.role.assignPermissions') }}
           </el-button>
@@ -53,6 +54,7 @@ const onDistributePermission = (row) => {
   visible.value = true
   selectRoleId.value = row.id
 }
+
 </script>
 
 <style lang="scss" scoped></style>

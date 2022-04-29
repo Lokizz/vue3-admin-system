@@ -1,22 +1,11 @@
 // * 使用 api 返回的数据设置用户相关的全局数据
-import {
-  login,
-  getUserInfo
-} from '@/api/sys'
+import { login, getUserInfo } from '@/api/sys'
 import md5 from 'md5'
-import {
-  getItem,
-  setItem,
-  removeAllItems
-} from '@/utils/storage'
-import {
-  setTimestamp
-} from '@/utils/auth'
+import { getItem, setItem, removeAllItems } from '@/utils/storage'
+import { setTimestamp } from '@/utils/auth'
 // ? 导入常量
-import {
-  TOKEN
-} from '@/constants'
-import router from '@/router'
+import { TOKEN } from '@/constants'
+import router, { resetRouter } from '@/router'
 
 export default {
   // 使用 namespaced 属性注册单独的模块
@@ -41,18 +30,15 @@ export default {
      */
     // store 的 login
     login(context, userInfo) {
-      const {
-        username,
-        password
-      } = userInfo
+      const { username, password } = userInfo
       return new Promise((resolve, reject) => {
         // ? 导入的 axios 封装模块
         login({
-            username,
-            // ? 加密密码
-            password: md5(password)
-          })
-          .then(data => {
+          username,
+          // ? 加密密码
+          password: md5(password)
+        })
+          .then((data) => {
             // ? 通过 commit 触发 mutation
             this.commit('user/setToken', data.token)
             // ? 登陆成功后跳转
@@ -61,7 +47,7 @@ export default {
             setTimestamp()
             resolve()
           })
-          .catch(err => {
+          .catch((err) => {
             reject(err)
           })
       })
@@ -78,9 +64,13 @@ export default {
      * * 用户退出
      */
     logout() {
+      // ? 删除登陆时添加的动态路由
+      resetRouter()
       // ? 清空用户数据
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
+      // TODO: side Effect mind
+      this.commit('app/setTagsViewList', [])
       // ? 清空缓存数据
       removeAllItems()
       // ? TODO: 清理权限相关配置

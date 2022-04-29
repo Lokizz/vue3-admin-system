@@ -1,114 +1,23 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import layout from '@/layout'
+import UserManage from './modules/UserManage'
+import RoleList from './modules/RoleList'
+import PermissionList from './modules/PermissionList'
+import Article from './modules/Article'
+import ArticleCreate from './modules/ArticleCreate'
+import store from '@/store'
 
 // ? 私有路由表（权限路由）
-const privateRoutes = [
-  {
-    path: '/user',
-    name: 'user',
-    redirect: '/user/manage',
-    component: layout,
-    meta: {
-      title: 'user',
-      icon: 'personnel'
-    },
-    children: [
-      {
-        path: '/user/manage',
-        name: 'userManage',
-        component: () => import('@/views/user-manage'),
-        meta: {
-          title: 'userManage',
-          icon: 'personnel-manage'
-        }
-      },
-      {
-        path: '/user/role',
-        name: 'userRole',
-        component: () => import('@/views/role-list'),
-        meta: {
-          title: 'roleList',
-          icon: 'role'
-        }
-      },
-      {
-        path: '/user/permission',
-        name: 'userPermission',
-        component: () => import('@/views/permission-list'),
-        meta: {
-          title: 'permissionList',
-          icon: 'permission'
-        }
-      },
-      {
-        path: '/user/info/:id',
-        name: 'userInfo',
-        component: () => import('@/views/user-info'),
-        // ! 用以接收组件的 props 作为 route.params
-        props: true,
-        meta: {
-          title: 'userInfo'
-        }
-      },
-      {
-        path: '/user/import',
-        name: 'import',
-        component: () => import('@/views/import'),
-        meta: {
-          title: 'excelImport'
-        }
-      }
-    ]
-  },
-  {
-    path: '/article',
-    component: layout,
-    redirect: '/article/ranking',
-    meta: {
-      title: 'article',
-      icon: 'article'
-    },
-    children: [
-      {
-        path: '/article/ranking',
-        name: 'articleRanking',
-        component: () => import('@/views/article-ranking'),
-        meta: {
-          title: 'articleRanking',
-          icon: 'article-ranking'
-        }
-      },
-      {
-        path: '/article/:id',
-        name: 'articleDetail',
-        component: () => import('@/views/article-detail'),
-        meta: {
-          title: 'articleDetail'
-        }
-      },
-      {
-        path: '/article/create',
-        name: 'articleCreate',
-        component: () => import('@/views/article-create'),
-        meta: {
-          title: 'articleCreate',
-          icon: 'article-create'
-        }
-      },
-      {
-        path: '/article/editor/:id',
-        name: 'articleEditor',
-        component: () => import('@/views/article-create'),
-        meta: {
-          title: 'articleEditor'
-        }
-      }
-    ]
-  }
+export const privateRoutes = [
+  UserManage,
+  RoleList,
+  PermissionList,
+  Article,
+  ArticleCreate
 ]
 
 // ? 公开路由表
-const publicRoutes = [
+export const publicRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login')
@@ -147,8 +56,22 @@ const publicRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  // ? 合并公有路由表和私有路由表
-  routes: [...privateRoutes, ...publicRoutes]
+  // ! 私有路由表不再被直接添加到 routes 中
+  routes: publicRoutes
 })
+
+// 初始化路由表
+export function resetRouter() {
+  if (
+    store.getters.userInfo &&
+    store.getters.userInfo.permission &&
+    store.getters.userInfo.permission.menus
+  ) {
+    const menus = store.getters.userInfo.permission.menus
+    menus.forEach((menu) => {
+      router.removeRoute(menu)
+    })
+  }
+}
 
 export default router

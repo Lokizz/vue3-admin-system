@@ -2,7 +2,11 @@
   <div class="user-manage-container">
     <el-card class="header">
       <div>
-        <el-button type="primary" @click="onImportExcelClick">
+        <el-button
+          type="primary"
+          @click="onImportExcelClick"
+          v-permission="['importUser']"
+        >
           {{ $t('msg.excel.importExcel') }}
         </el-button>
         <el-button type="success" @click="onToExcelClick">
@@ -77,10 +81,20 @@
               {{ $t('msg.excel.show') }}
             </el-button>
             <!-- 传递 userId 给 roles 组件 -->
-            <el-button type="info" size="small" @click="onShowRoleClick(row)">
+            <el-button
+              type="info"
+              size="small"
+              @click="onShowRoleClick(row)"
+              v-permission="['distributeRole']"
+            >
               {{ $t('msg.excel.showRole') }}
             </el-button>
-            <el-button type="danger" size="small" @click="onRemoveClick(row)">
+            <el-button
+              type="danger"
+              size="small"
+              @click="onRemoveClick(row)"
+              v-permission="['removeUser']"
+            >
               {{ $t('msg.excel.remove') }}
             </el-button>
           </template>
@@ -177,7 +191,6 @@ const onRemoveClick = (row) => {
       type: 'warning'
     }
   ).then(async () => {
-    console.log(row._id)
     await deleteUser(row._id)
     ElMessage.success(i18n.t('msg.excel.removeSuccess'))
     // ! 删除成功以后重新获取数据进行渲染

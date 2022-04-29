@@ -17,6 +17,11 @@ export default {
       setItem(LANG, lang)
       state.language = lang
     },
+    // TODO: side Effect mind
+    setTagsViewList(state, tag) {
+      state.tagsViewList = tag
+      setItem(TAGS_VIEW, state.tagsViewList)
+    },
     // 添加 tags
     addTagsViewList(state, tag) {
       // 不能添加重复的 tag
@@ -44,7 +49,10 @@ export default {
       } else if (payload.type === 'other') {
         state.tagsViewList = [state.tagsViewList[payload.index]]
       } else if (payload.type === 'right') {
-        state.tagsViewList.splice(payload.index + 1, state.tagsViewList.length - payload.index + 1)
+        state.tagsViewList.splice(
+          payload.index + 1,
+          state.tagsViewList.length - payload.index + 1
+        )
       }
       // 操作完成以后重新保存数据
       setItem(TAGS_VIEW, state.tagsViewList)

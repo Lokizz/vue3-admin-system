@@ -94,7 +94,6 @@ const props = defineProps({
 const detailData = ref({})
 const getUserDetail = async () => {
   detailData.value = await userDetail(props.id)
-  console.log(detailData)
 }
 getUserDetail()
 // ? 国际化处理

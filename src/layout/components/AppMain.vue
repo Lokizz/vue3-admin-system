@@ -14,6 +14,7 @@
 <script setup>
 import { isTags } from '@/utils/tags.js'
 import { generateTitle, watchSwitchLang } from '@/utils/i18n.js'
+
 // ? 生成 title
 const getTitle = (route) => {
   let title = ''
