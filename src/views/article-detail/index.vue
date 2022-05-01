@@ -33,7 +33,10 @@ const getArticleDetail = async () => {
 getArticleDetail()
 
 // ? 编辑按钮点击事件
-const onEditClick = () => {}
+const router = useRouter()
+const onEditClick = () => {
+  router.push(`/article/editor/${articleId}`)
+}
 </script>
 
 <style lang="scss" scoped>

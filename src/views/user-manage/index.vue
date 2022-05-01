@@ -162,7 +162,7 @@ const handleCurrentChange = (currentPage) => {
 
 // ? 查看用户详情
 const onShowClick = (id) => {
-  // 跳转页面的同时，通过
+  // 将 `route.params` 设置为组件的 props
   router.push(`/user/info/${id}`)
 }
 
