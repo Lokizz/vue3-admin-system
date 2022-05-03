@@ -169,7 +169,7 @@ export default {
     dynamicTitle: 'Dynamic display',
     show: 'check',
     remove: 'delete',
-    edit: 'editor',
+    edit: 'edit',
     dialogTitle1: 'Are you sure you want to delete the article ',
     dialogTitle2: ' NS?',
     removeSuccess: 'Article deleted successfully',
