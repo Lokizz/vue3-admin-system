@@ -23,7 +23,7 @@ service.interceptors.request.use(
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     // ? 添加 icode (有效期为30天)
-    config.headers.icode = '5300E26A2ACF2904'
+    config.headers.icode = 'C5F507E58721B170'
     // ? 配置接口的国际化
     config.headers['Accept-Language'] = store.getters.language
     // ! 必须返回 config
