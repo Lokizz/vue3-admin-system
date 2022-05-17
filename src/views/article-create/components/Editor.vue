@@ -51,6 +51,12 @@ onMounted(() => {
   initEditor()
 })
 
+// 组件销毁时，也及时销毁编辑器
+onBeforeUnmount(() => {
+  if (editor == null) return
+  editor.destroy()
+})
+
 // ? 处理点击提交事件
 const onSubmitClick = async () => {
   if (props.detail && props.detail._id) {
