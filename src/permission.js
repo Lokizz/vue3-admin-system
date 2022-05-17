@@ -20,7 +20,8 @@ router.beforeEach(async (to, from, next) => {
       // ? 判断用户资料是否存在，如果不存在，则获取
       if (!store.getters.hasUserInfo) {
         // ! 获取接口返回 profile 数据中的 `permission` 的值
-        const { permission } = await store.dispatch('user/getUserInfo')
+        const userInfo = await store.dispatch('user/getUserInfo')
+        const { permission } = userInfo
         // 处理用户权限，筛选出需要添加的路由
         const filterRoutes = await store.dispatch(
           'permission/filterRoutes',
