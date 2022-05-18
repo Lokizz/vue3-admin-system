@@ -9,6 +9,8 @@ function resolve(dir) {
 }
 
 module.exports = defineConfig({
+  // ! 如果应用是被部署在子路径上，需要指定 publicPath
+  publicPath: process.env.NODE_ENV === 'production' ? '/admin/' : '/',
   transpileDependencies: true,
   // ? webpack 的 devServer 功能提供代理功能，将所有发送的请求，转发到另一个服务器上
   devServer: {
