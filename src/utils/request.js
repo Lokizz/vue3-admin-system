@@ -1,3 +1,10 @@
+/*
+ * @Author: MacLoki
+ * @Date: 2022-04-06 21:17:39
+ * @LastEditors: MacLoki
+ * @LastEditTime: 2022-06-13 10:13:47
+ * @FilePath: /vue3-admin-system/src/utils/request.js
+ */
 // * 自定义请求的通用设置，以及拦截器
 import axios from 'axios'
 import { ElMessage as Elm } from 'element-plus'
@@ -23,7 +30,7 @@ service.interceptors.request.use(
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     // ? 添加 icode (有效期为30天)
-    config.headers.icode = 'C5F507E58721B170'
+    config.headers.icode = 'FDC048EDB5D5C745'
     // ? 配置接口的国际化
     config.headers['Accept-Language'] = store.getters.language
     // ! 必须返回 config
