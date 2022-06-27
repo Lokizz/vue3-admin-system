@@ -1,3 +1,10 @@
+<!--
+ * @Author: MacLoki
+ * @Date: 2022-04-24 14:36:14
+ * @LastEditors: MacLoki
+ * @LastEditTime: 2022-06-27 23:14:57
+ * @FilePath: /vue3-admin-system/src/views/profile/components/Feature.vue
+-->
 <template>
   <el-collapse v-model="activeName" accordion>
     <el-collapse-item

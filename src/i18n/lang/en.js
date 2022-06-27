@@ -84,17 +84,20 @@ export default {
   },
   profile: {
     muted:
-      '"Vue3 rewrite vue-element-admin, realize the back-end front-end integrated solution" project demonstration',
+      'The demonstration of background management system by vue3 and element-plus',
     introduce: 'Introduce',
     projectIntroduction: 'Project Introduction',
     projectFunction: 'Project Function',
     feature: 'Feature',
     chapter: 'Chapter',
     author: 'Author',
-    name: 'Sunday',
-    job: 'A front-end development program',
-    Introduction:
-      'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.'
+    name: 'Eric Lok',
+    job: 'Front-end developer',
+    Introduction: `Proficient in using Vue3's Composition API with Vue Router, Vuex and Pinia for component development, familiar with the use of HTML, CSS and JavaScript technologies, and able to achieve responsive layout and multi-terminal adaptation compatibility without third-party libraries.
+
+      Has a strong interest and enthusiasm for Web front-end and related technologies, and has self-taught including: Vue3 framework, uniapp framework, Element-Plus component library, Sa SS preprocessing and Axios packaging.
+      
+      With experience in graphic design, independent aesthetics for interface design and typography.`
   },
   userInfo: {
     print: 'Print',

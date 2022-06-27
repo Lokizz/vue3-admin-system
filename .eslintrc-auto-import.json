@@ -48,8 +48,6 @@
     "ElTabPane": true,
     "ElTabs": true,
     "ElTag": true,
-    "ElTimeline": true,
-    "ElTimelineItem": true,
     "ElTooltip": true,
     "ElTree": true,
     "getCurrentInstance": true,

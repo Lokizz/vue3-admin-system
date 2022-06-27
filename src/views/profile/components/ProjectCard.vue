@@ -10,7 +10,7 @@
       <!-- 头像 -->
       <div class="box-center">
         <pan-thumb
-          :image="$store.getters.userInfo.avatar"
+          image="https://s2.loli.net/2022/06/27/ZepKimb975zYdXA.jpg"
           height="100px"
           width="100px"
         >

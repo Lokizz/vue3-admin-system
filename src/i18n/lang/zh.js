@@ -83,17 +83,19 @@ export default {
     sidebarDesc: '项目功能菜单'
   },
   profile: {
-    muted: '《vue3 改写 vue-element-admin，实现后台前端综合解决方案》项目演示',
+    muted: '《vue3 + Element-plus 实现的后台管理系统》项目演示',
     introduce: '介绍',
     projectIntroduction: '项目介绍',
     projectFunction: '项目功能',
     feature: '功能',
     chapter: '章节',
     author: '作者',
-    name: 'Sunday',
-    job: '一个前端开发程序猿',
-    Introduction:
-      '高级技术专家，曾就职于国内一线互联网公司，统筹过的多个大型项目用户数已过千万级。致力于研究大前端技术，多次受邀参加国内前端技术分享会，如：2018 年 Google 中国技术分享会。'
+    name: 'Eric',
+    job: '前端开发',
+    Introduction: `
+    熟练使用 Vue3 的 Composition API 搭配 Vue Router，Vuex 和 Pinia 进行组件化开发，熟悉 HTML、CSS 和 JavaScript 技术的使用，能够脱离第三方库实现响应式布局与多端适配兼容。
+      对 Web 前端及其相关的技术拥有浓厚的兴趣和热情，自学了包括：Vue3 框架、uniapp 框架、Element-Plus 组件库、SaSS 预处理和 Axios 的封装等。
+      拥有平面设计的经验，对于界面设计与排版具有独立的审美。`
   },
   userInfo: {
     print: '打印',
